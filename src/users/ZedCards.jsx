@@ -26,7 +26,7 @@ export default function ZedCards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://zed4.vercel.app/api/getdata");
+        const response = await axios.get(process.env.REACT_API_PATH +"/getdata");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -40,7 +40,7 @@ export default function ZedCards() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://zed4.vercel.app/api/deletedata/${id}`);
+      await axios.delete(process.env.REACT_API_PATH +`/deletedata/${id}`);
       setData(data.filter((item) => item._id !== id));
     } catch (error) {
       console.error("Error deleting data:", error);
@@ -64,7 +64,7 @@ export default function ZedCards() {
   const handleUpdate = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/editdata/${editItemId}`,
+        process.env.REACT_API_PATH +`/editdata/${editItemId}`,
         formData
       );
       console.log("Updated Data:", response.data);

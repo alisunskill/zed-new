@@ -22,11 +22,11 @@ export default function ZedCards() {
     setShow(false);
   };
   // const handleShow = () => setShow(true);
-console.log(process.env)
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(process.env.REACT_API_PATH +"/getdata");
+        const response = await axios.get(process.env.REACT_APP_API_PATH +"/getdata");
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -40,7 +40,7 @@ console.log(process.env)
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(process.env.REACT_API_PATH +`/deletedata/${id}`);
+      await axios.delete(process.env.REACT_APP_API_PATH +`/deletedata/${id}`);
       setData(data.filter((item) => item._id !== id));
     } catch (error) {
       console.error("Error deleting data:", error);

@@ -22,7 +22,7 @@ export default function ZedCards() {
     setShow(false);
   };
   // const handleShow = () => setShow(true);
-
+console.log(process.env)
   useEffect(() => {
     const fetchData = async () => {
       try {
